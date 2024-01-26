@@ -1,0 +1,12 @@
+Scripts
+Lib
+*.cfg
+Include
+*.pdf
+*.csv
+share
+www
+data
+__*
+*.exe
+project_templates

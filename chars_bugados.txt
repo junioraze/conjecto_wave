@@ -1,0 +1,12 @@
+from csv2pdf import convert
+convert("voto_test.csv", "destination.pdf")
+
+chars para remover do arquivo:
+–
+“
+”
+—
+…
+’
+‘
+š

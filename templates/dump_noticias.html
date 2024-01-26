@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dump Noticias SuperAcesso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        article {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Dump de Noticias para a empresa {{ nome_empresa }} </h1>
+        <p>Todas as noticias abaixo nas tags de artigo possuim relação direta com a empresa {{ nome_empresa }} ou são de
+            interesse da empresa {{ nome_empresa }}. </p>
+
+    </header>
+
+    <main>
+
+    {% for idx, itens in dataframe.iterrows() %}
+        <article>
+            <h2>Titulo da Noticia: {{ idx[0] }}</h2>
+
+            <h3>Dados sobre a noticia:</h3>
+            <table>
+            {% for item_nome in itens.keys()  %}
+                <tr>
+                    <!-- Nome da Coluna -->
+                    <th>{{ item_nome }}</th> 
+                    <!-- Valor do dado -->
+                    <td>{{ itens[item_nome] }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            <h3>Corpo da noticia: </h3>
+            <p>{{ idx[1] }}</p>
+        </article>
+        <br>
+    {% endfor %}
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dump de Noticias. Todos os direitos reservados a SuperAcesso.</p>
+    </footer>
+
+</body>
+
+</html>
